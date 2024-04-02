@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="left">
+            <form action="">
+                <input type="text" name="char" id="char">
+                <button id="start" name="start">start</button>
+                <button id="check" name="check">sprawdz</button>
+            </form >
+        </div>
+        <div class="right">
+            <div class="word"></div>
+            <div class="count"></div>
+        </div>
+    </main>
+    <script>
+        const words = [
+            "Superman",
+            "Kotek",
+            "Slon",
+            "Skrzynkowy",
+            "Chrumkający",
+            "Wyścigowisko",
+            "Szampan",
+            "Pozytywność",
+            "Marzanna",
+            "Kontemplacja",
+            "Skrzypek",
+            "Równoległość",
+            "Paralotnia",
+            "Zadziwiający",
+            "Skomplikowany",
+            "Bajeczka",
+            "Melancholia",
+            "Popołudniówka",
+            "Maksymalny",
+            "Złotousty"
+        ];
+        const form = document.querySelector('form');
+        const input = form.querySelector("input");
+        const form1 = document.querySelector(".sec")
+        const btn1 = document.getElementById("start");
+        const btn2 = document.getElementById("check");
+        let create_div = [];
+
+        
+
+        btn1.addEventListener("click", e => {
+            e.preventDefault();
+            let r = Math.floor(Math.random() * 20);
+            let word = words[r];
+            let word_splited = [...word]
+            const word_place = document.querySelector(".word");
+            console.log(word_splited);
+
+            word_place.innerHTML = ""; 
+            for (let i = 0; i < word_splited.length; i++) {
+                let div = document.createElement("div");
+                div.textContent = word_splited[i];
+                div.setAttribute("class", "cha");
+                div.style.color = "transparent";
+                div.dataset.index = i + 1;
+                word_place.appendChild(div);
+                create_div.push(div);
+            }
+            });
+
+         btn2.addEventListener("click", e => {
+            e.preventDefault();
+            let counter = 0;
+            let letter = document.getElementById("char").value.toLowerCase();
+                for (let i = 0; i < create_div.length; i++) {
+                    if (letter === create_div[i].textContent.toLowerCase()) {
+                        console.log(create_div[i].textContent);
+                        create_div[i].style.color = "black";
+                    } else {
+                        counter++;
+                    }
+                }
+            let count = document.querySelector(".count");
+            count.innerHTML = counter;
+            });
+    </script>
+</body>
