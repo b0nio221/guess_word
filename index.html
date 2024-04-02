@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="left">
+            <form action="">
+                <input type="text" name="char" id="char">
+                <button id="start">start</button>
+            </form>
+            <form action="" id="sec" name="form">
+                <button id="check">sprawdz</button>
+            </form >
+        </div>
+        <div class="right">
+            <div class="word"></div>
+            <div class="count"></div>
+        </div>
+    </main>
+    <script>
+        const words = ["Superman", "Kotek", "Slon"];
+        const form = document.querySelector('form');
+        const input = form.querySelector("input");
+        const form1 = document.querySelector(".sec")
+        const btn = form
+        form.addEventListener("click", e => {
+            e.preventDefault();
+            let r = Math.floor(Math.random()*3);
+            let word = words[r.toFixed(0)];
+            let word_splited = [...word]
+            console.log(word_splited);
+            
+            //document.querySelector(".word").innerHTML = word;
+        });
+        form.addEventListener("click", () => {
+            
+            let letter = document.forms.form.char.value;
+            console.log(letter);
+        });
+
+       
+        
+    </script>
+</body>
